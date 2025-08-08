@@ -1,6 +1,14 @@
 // /app/api/retell-token/route.ts
 export const runtime = 'edge';
 
+// Quick health check so we can open this route in a browser:
+export async function GET() {
+  return new Response(JSON.stringify({ ok: true, route: 'retell-token' }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
 export async function POST() {
   const r = await fetch('https://api.retell.ai/v2/create-web-call', {
     method: 'POST',
